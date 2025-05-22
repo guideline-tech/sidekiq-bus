@@ -91,7 +91,7 @@ describe 'Sidekiq Integration' do
       if Sidekiq::VERSION < '4'
         Sidekiq::Scheduled::Poller.new.poll
       else
-        Sidekiq::Scheduled::Poller.new.enqueue
+        Sidekiq::Scheduled::Poller.new(Sidekiq).enqueue
       end
 
       val = QueueBus.redis { |redis| redis.lpop('queue:bus_incoming') }
@@ -102,7 +102,7 @@ describe 'Sidekiq Integration' do
         if Sidekiq::VERSION < '4'
           Sidekiq::Scheduled::Poller.new.poll
         else
-          Sidekiq::Scheduled::Poller.new.enqueue
+          Sidekiq::Scheduled::Poller.new(Sidekiq).enqueue
         end
 
         val = QueueBus.redis { |redis| redis.lpop('queue:bus_incoming') }
