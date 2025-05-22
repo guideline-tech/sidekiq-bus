@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency('queue-bus', ['>= 0.7', '< 1'])
   s.add_dependency('sidekiq', ['>= 3.0.0', '< 7.0'])
 
+  s.add_development_dependency("rack")
   s.add_development_dependency("rspec")
   s.add_development_dependency("fakeredis")
   s.add_development_dependency("redis-namespace")
@@ -26,4 +27,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency("timecop")
   s.add_development_dependency("json_pure")
   s.add_development_dependency("rubocop")
+  s.add_development_dependency("sidekiq-scheduler")
 end
