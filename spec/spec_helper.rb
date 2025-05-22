@@ -7,8 +7,7 @@ require 'pry'
 
 reset_test_adapter
 
-require 'fakeredis'
-Sidekiq.redis = ConnectionPool.new { Redis.new(driver: Redis::Connection::Memory) }
+ENV['REDIS_URL'] ||= 'redis://localhost:6379/1'
 
 require 'fileutils'
 

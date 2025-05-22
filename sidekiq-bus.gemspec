@@ -17,13 +17,14 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency('queue-bus', ['>= 0.7', '< 1'])
-  s.add_dependency('sidekiq', ['>= 3.0.0', '< 7.0'])
+  s.add_dependency('sidekiq', ['>= 3.0.0', '< 8.0'])
 
+  s.add_development_dependency("rack")
   s.add_development_dependency("rspec")
-  s.add_development_dependency("fakeredis")
   s.add_development_dependency("redis-namespace")
   s.add_development_dependency("pry")
   s.add_development_dependency("timecop")
   s.add_development_dependency("json_pure")
   s.add_development_dependency("rubocop")
+  s.add_development_dependency("sidekiq-scheduler")
 end
