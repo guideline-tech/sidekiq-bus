@@ -4,7 +4,39 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+> **Note:** This repository is the `guideline-tech` fork of
+> [`queue-bus/sidekiq-bus`](https://github.com/queue-bus/sidekiq-bus). The `1.0.x`
+> series diverges from upstream to support scheduling the queue-bus heartbeat via
+> Sidekiq Enterprise periodic jobs (`config.periodic`) instead of taking a hard
+> runtime dependency on `sidekiq-scheduler`, which is the scheduler our apps use.
+
 ## [Unreleased]
+
+## [1.0.3]
+
+### Changed
+- Synced `SidekiqBus::VERSION` to the released tag; the constant had lagged at `1.0.1`.
+- Documented the fork's divergence from upstream `queue-bus/sidekiq-bus` (see note above).
+
+## [1.0.2] - 2025-05-22
+
+### Changed
+- Raised the upper bound on `sidekiq` to allow Sidekiq 7 (`>= 3.0.0, < 8.0`).
+- Bumped Ruby to 3.3.9.
+
+## [1.0.1] - 2023-12-12
+
+### Added
+- Sidekiq Enterprise support: when `Sidekiq::Enterprise` is defined, the queue-bus
+  heartbeat is registered as a Sidekiq Enterprise periodic job rather than through
+  `sidekiq-scheduler`.
+
+## [1.0.0] - 2023-10-17
+
+### Changed
+- Expanded the `sidekiq` requirement to allow versions below 7.
+- Removed the hard `sidekiq-scheduler` runtime dependency; it is now required lazily
+  (and raises with a clear message if missing) only on the non-Enterprise heartbeat path.
 
 ## [0.9.0] - 2019-12-03
 
